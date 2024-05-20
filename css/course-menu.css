@@ -1,0 +1,861 @@
+@charset "utf-8";
+html {
+    scroll-behavior: smooth;
+}
+
+img{
+    vertical-align: bottom;
+}
+
+#wrapper {
+    margin: 0 auto;
+    line-height: 1.5;
+    font-size: 1.3rem;
+    font-family: "ヒラギノ明朝 ProN W6", "HiraMinProN-W6", "HG明朝E", "MS Ｐ明朝", "MS PMincho", "MS 明朝", serif;
+    color: #525252;
+	animation: fadein 2.5s forwards;
+    background: url("../images/washi-glay.png");
+    background-size:100% 100%;
+    background-position:50%;
+    background-repeat: no-repeat;
+    
+}
+@keyframes fadein{
+	0%{opacity: 0}
+	100%{opacity: 1}
+}
+
+/* パソコンで見たときは"pc"のclassがついた画像が表示される */
+.pc { display: block !important; }
+.sp1 { display: none !important; }
+.sp2 { display: none !important; }
+ 
+/* スマートフォンで見たときは"sp1"のclassがついた画像が表示される */
+@media only screen and (max-width: 834px) and (min-width:429px) {
+    .pc { display: none !important; }
+    .sp1 { display: block !important; }
+    .sp2 { display: none !important; }
+}
+
+/* スマートフォンで見たときは"sp2"のclassがついた画像が表示される */
+@media only screen and (max-width: 428px) {
+    .pc { display: none !important; }
+    .sp1 { display: none !important; }
+    .sp2 { display: block !important; }
+}
+
+
+a :hover{
+    opacity: 0.7;
+    transition: 0.5s;
+}
+
+
+/* --------- ここからheader ---------- */
+header {
+    display: flex;
+    padding: 0 0 15px;
+    position: fixed;
+    top:-0px;
+    width: 100%;
+    height: auto;
+    z-index: 10000;
+    opacity: 0.9;
+    transition: .8s;
+    background: #1a1a1a;
+    font-size: 100%;
+}
+@media screen and (max-width: 834px) {
+header {
+    padding: 0 ;
+}
+}
+header a {
+    text-decoration: none;
+    color: #ececec;
+    letter-spacing: 0.1em;
+}
+.hamburger {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+  @media screen and (max-width: 834px) {
+  .hamburger {
+    width: 30%;
+}
+}
+    
+.hamburger .btn-gnav {
+    position: fixed;
+    top: 8px;
+    right: 20px;
+    width: 30px;
+    height: 24px;
+    z-index: 12;
+    box-sizing: border-box;
+    cursor: pointer;
+    -webkit-transition: all 400ms;
+    transition: all 400ms;
+}
+  
+.hamburger .btn-gnav span {
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background: #ECECEC;
+    border-radius: 10px;
+    -webkit-transition: all 400ms;
+    transition: all 400ms;
+}
+  
+.hamburger .btn-gnav span:nth-child(1) {
+    top: 0;
+}
+  
+.hamburger .btn-gnav span:nth-child(2) {
+    top: 10px;
+}
+  
+.hamburger .btn-gnav span:nth-child(3) {
+    top: 20px;
+}
+  
+.hamburger .btn-gnav.open span:nth-child(1) {
+    background: #ffffff;
+    top: 6px;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+  
+.hamburger .btn-gnav.open span:nth-child(2),
+.hamburger .btn-gnav.open span:nth-child(3) {
+    top: 6px;
+    background: #ffffff;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.btn-gnav.active span:nth-of-type(1) {
+    top: 6px;
+    left: 2px;
+    transform: translateY(0) rotate(-45deg);
+    width: 100%;
+}
+  
+.btn-gnav.active span:nth-of-type(2) {
+  opacity: 0;
+}
+  
+.btn-gnav.active span:nth-of-type(3){
+    top: 6px;
+    left: 2px;
+    transform: translateY(0) rotate(45deg);
+    width: 100%;
+}
+  
+.btn-gnav {
+    display: none;
+}
+  
+.gnav{
+    display: block;
+}
+ul.gnav-menu{
+    margin: 0;
+}  
+.gnav .gnav-menu {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    list-style-type: none;
+    margin-right: 15px;
+}
+@media screen and (max-width: 834px) {
+.gnav .gnav-menu {
+    margin: 0;}
+}
+.gnav .gnav-menu li {
+    margin: 0 auto;
+    padding: 10px 25px 5px;
+    color: #eeeeee;
+}
+@media screen and (max-width: 834px) {
+    .gnav .gnav-menu li {
+      display: block;
+    }
+}
+ 
+@media screen and (max-width: 834px) {
+    .btn-gnav {
+        display: block;
+    } 
+    .gnav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100%;
+        background-color: #1a1a1a;
+        font-size: 18px;
+        box-sizing: border-box;
+        z-index: 1;
+        padding-top: 65px;
+        transition: .3s;
+    }  
+    .gnav.open {
+        right: 0;
+    } 
+    .gnav .gnav-menu {
+        padding: 0;
+        width: 100%;
+        height: 80%;
+        display: block;
+        flex-direction: column;
+        text-align: center;
+        /*justify-content: center;*/
+    }  
+    .gnav .gnav-menu li {
+        width: 70%;
+        padding: 25px;
+    }
+}
+.gnav .gnav-menu li:nth-child(n+7){
+    border: none;
+}
+.gnav a{
+    text-decoration: none;
+    color: #fcfcfc;
+}
+.gnav:hover{
+    color: #a8a8a8;
+}
+.gnav a.active{
+    color: #1b85ff;
+}
+
+.gnav-menu .phone-number{
+    font-size: 1.6em;
+}
+.global-navi-sns-icon{
+    text-align: right;
+    padding-right: 240px;
+}
+.global-navi-sns-icon img{
+    padding: 5px 8px;
+}
+.reserve-button{
+    text-align: right;
+    margin-top: -35px;
+}
+
+.reserve-button b{
+    width: 11%;
+    padding: 2px 15px;
+    margin-right: 50px;
+    color: #fcfcfc;
+    background-color: #b9000e;
+    border: 6px outset #b9000e;
+}
+/* -------- ここまでheader --------- */
+
+
+/* --------- main --------- */
+.top-page-logo-yukihira{
+    position: absolute;
+    z-index: 999;
+    top:43%;
+    left:70%; 
+}
+@media screen and (max-width: 834px) {
+.top-page-logo-yukihira{
+    top:45%;
+    left:60%;
+}
+}
+
+.oshinagaki{
+    padding: 100px 0 0;
+    text-align: center;
+}
+@media screen and (max-width: 428px) {
+.oshinagaki{
+    padding: 50px 0 0;
+}
+}
+.oshinagaki-top{
+    margin-bottom: 10px;
+}
+.oshinagaki-top-hr{
+    margin-bottom: 80px;
+    width: 60%;
+}
+@media screen and (max-width: 834px) {
+.oshinagaki-top-hr{
+    margin-bottom: 70px;
+}
+}
+@media screen and (max-width: 428px) {
+    .oshinagaki-top-hr{
+        margin-bottom: 15px;
+    }
+    }
+
+
+/*===========fade-inアニメーションの指定===========*/
+
+.js-fade {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(50px);
+    transition: opacity 2s,visibility 2s, transform 1s;
+    display: flex;
+}
+.scroll {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0px);
+}
+
+
+/* -------- くえコースのためのcss --------- */
+.kue-course-wrapper{
+    padding: 150px 0;
+    background: url("../images/background-slide.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: 0% 0%;
+}
+@media screen and (max-width: 834px) {
+.kue-course-wrapper{
+    padding: 40px 0 150px;
+    background-size: 100% 100%;
+    background-position: 0% 4%;
+}
+}
+@media screen and (max-width: 420px) {
+    .kue-course-wrapper{
+        padding: 40px 0 80px;
+        background-size: 100% 100%;
+        background-position: 0% 4%;
+    }
+    }
+
+.oshinagaki-kue-course{
+    display: flex;
+    margin: 0 15%;
+    width: 70%;
+    height: auto;
+    border: none;
+}
+@media screen and (max-width: 834px) {
+.oshinagaki-kue-course{
+    display: block;
+}
+}
+@media screen and (max-width: 428px) {
+    .oshinagaki-kue-course{
+        margin: 0 10%;
+        width: 80%;
+    }
+    }
+.oshinagaki-kue-course-introduce h2{
+    margin-bottom: 80px;
+}
+@media screen and (max-width: 420px) {
+.oshinagaki-kue-course-introduce h2{
+    font-size: 24px;
+    margin-bottom: 50px;
+}
+}
+.oshinagaki-kue-course-introduce p{
+    font-size: 18px;
+    line-height: 2.5em;
+    letter-spacing: 1px;
+    padding-right: 35px;
+    text-align: left;
+}
+@media screen and (max-width: 834px) {
+.oshinagaki-kue-course-introduce p{
+    padding-right: 20px;
+}
+}
+@media screen and (max-width: 420px) {
+    .oshinagaki-kue-course-introduce p{
+        padding-right: 0;
+    }
+}
+
+.oshinagaki-kue-course img{
+    padding-top: 150px;
+}
+@media screen and (max-width: 834px) {
+.oshinagaki-kue-course img{
+    padding-top: 70px;
+}
+}
+@media screen and (max-width: 420px) {
+    .oshinagaki-kue-course img{
+        padding-top: 50px;
+    }
+    }
+
+.oshinagaki-kue-course-menu-h2{
+    margin-top: 170px;
+}
+@media screen and (max-width: 834px) {
+.oshinagaki-kue-course-menu-h2{
+    margin-top: 70px;
+}
+}
+@media screen and (max-width: 834px) {
+    .oshinagaki-kue-course-menu-h2{
+        font-size: 22px;
+    }
+}
+
+.oshinagaki-kue-course-menu-h3{
+    color: #b9000e;
+    margin-bottom: 100px;
+}
+@media screen and (max-width: 420px) {
+.oshinagaki-kue-course-menu-h3{
+    margin-bottom: 60px;
+}
+}
+.oshinagaki-kue-course-menu-hr{
+    width: 60%;
+}
+@media screen and (max-width: 420px) {
+.oshinagaki-kue-course-menu-hr{
+    width: 80%;
+}
+}
+.oshinagaki-kue-course-menu-list{
+    display: flex;
+    margin-left: 7%;
+}
+@media screen and (max-width: 834px) {
+.oshinagaki-kue-course-menu-list{
+    display: block;
+    margin-left: 7%;
+}
+}
+@media screen and (max-width: 834px) {
+    .oshinagaki-kue-course-menu-list{
+        margin-left: 0;
+    }
+    }
+
+.oshinagaki-kue-course-menu-list-menu ol{
+    text-align: left;
+    list-style-type: none;
+    line-height: 4em;
+    margin-left: 120px;    
+}
+@media screen and (max-width: 834px) {
+    .oshinagaki-kue-course-menu-list-menu ol{
+        line-height: 3em;
+        margin-left: 25%;    
+    }
+    }
+@media screen and (max-width: 420px) {
+.oshinagaki-kue-course-menu-list-menu ol{
+    font-size: 16px;
+    line-height: 3em;
+    margin-left: auto;    
+}
+}
+.oshinagaki-kue-course-menu-list-menu ol li{
+    letter-spacing: 1px;
+}
+.oshinagaki-kue-course-menu-list-menu p{
+    text-align: left;
+    font-size: 18px;
+    margin-left: 130px;   
+}
+@media screen and (max-width: 834px) {
+.oshinagaki-kue-course-menu-list-menu p{
+    text-align: left;
+    font-size: 18px;
+    margin-left: 30%;   
+}
+}
+@media screen and (max-width: 420px) {
+    .oshinagaki-kue-course-menu-list-menu p{
+        text-align: center;
+        font-size: 16px;
+        margin-left: auto;   
+    }
+}
+.oshinagaki-kue-course-menu-list-images{
+margin-left: 20px;
+}
+@media screen and (max-width: 834px) {
+.oshinagaki-kue-course-menu-list-images{
+    margin-left: 15%;
+    }
+}
+@media screen and (max-width: 428px) {
+    .oshinagaki-kue-course-menu-list-images{
+        margin-left: auto;
+        }
+}
+.oshinagaki-kue-course-menu-list-images img{
+    display:block;
+    margin: 50px 30px;
+}
+
+/* -------- ひらめコースのためのcss --------- */
+.hirame-course-wrapper{
+    padding: 150px 0;
+    background: url("../images/background-slide.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: 0% 0%;
+}
+@media screen and (max-width: 834px) {
+.hirame-course-wrapper{
+    padding: 40px 0 150px;
+    background-size: 100% 100%;
+    background-position: 0% 4%;
+}
+}
+@media screen and (max-width: 420px) {
+    .hirame-course-wrapper{
+        padding: 40px 0 80px;
+        background-size: 100% 100%;
+        background-position: 0% 4%;
+    }
+    }
+
+.oshinagaki-hirame-course{
+    display: flex;
+    margin: 0 15%;
+    width: 70%;
+    height: auto;
+}
+@media screen and (max-width: 834px) {
+.oshinagaki-hirame-course{
+    display: block;
+}
+}
+@media screen and (max-width: 428px) {
+    .oshinagaki-hirame-course{
+        margin: 0 10%;
+        width: 80%;
+    }
+}
+.oshinagaki-hirame-course-introduce h2{
+    margin-bottom: 80px;
+}
+@media screen and (max-width: 420px) {
+.oshinagaki-hirame-course-introduce h2{
+    font-size: 24px;
+    margin-bottom: 50px;
+}
+}
+.oshinagaki-hirame-course-introduce p{
+    font-size: 18px;
+    line-height: 2.5em;
+    letter-spacing: 1px;
+    padding-right: 35px;
+    text-align: left;
+}
+@media screen and (max-width: 834px) {
+.oshinagaki-hirame-course-introduce p{
+    padding-right: 20px;
+}
+}
+@media screen and (max-width: 420px) {
+    .oshinagaki-hirame-course-introduce p{
+        padding: 0;
+    }
+}
+
+.oshinagaki-hirame-course img{
+    padding-top: 150px;
+}
+@media screen and (max-width: 834px) {
+.oshinagaki-hirame-course img{
+    padding-top: 70px;
+}
+}
+@media screen and (max-width: 420px) {
+    .oshinagaki-hirame-course img{
+        padding-top: 50px;
+    }
+    }
+
+.oshinagaki-hirame-course-menu-h2{
+    margin-top: 170px;
+}
+@media screen and (max-width: 834px) {
+.oshinagaki--cohirameurse-menu-h2{
+    margin-top: 70px;
+}
+}
+@media screen and (max-width: 834px) {
+    .oshinagaki-hirame-course-menu-h2{
+        font-size: 22px;
+    }
+}
+
+.oshinagaki-hirame-course-menu-h3{
+    color: #b9000e;
+    margin-bottom: 100px;
+}
+@media screen and (max-width: 420px) {
+.oshinagaki-hirame-course-menu-h3{
+    margin-bottom: 60px;
+}
+}
+.oshinagaki-hirame-course-menu-hr{
+    width: 60%;
+}
+@media screen and (max-width: 420px) {
+.oshinagaki-hirame-course-menu-hr{
+    width: 80%;
+}
+}
+.oshinagaki-hirame-course-menu-list{
+    display: flex;
+    margin-left: 7%;
+}
+@media screen and (max-width: 834px) {
+.oshinagaki-hirame-course-menu-list{
+    display: block;
+    margin-left: 7%;
+}
+}
+@media screen and (max-width: 834px) {
+    .oshinagaki-hirame-course-menu-list{
+        margin-left: auto;
+    }
+    }
+
+.oshinagaki-hirame-course-menu-list-menu ol{
+    text-align: left;
+    list-style-type: none;
+    line-height: 4em;
+    margin-left: 120px;    
+}
+
+@media screen and (max-width: 420px) {
+.oshinagaki-hirame-course-menu-list-menu ol{
+    font-size: 16px;
+    line-height: 3em;
+    margin-left: auto;    
+}
+}
+.oshinagaki-hirame-course-menu-list-menu ol li{
+    letter-spacing: 1px;
+}
+.oshinagaki-hirame-course-menu-list-menu p{
+    text-align: left;
+    font-size: 18px;
+    margin-left: 130px;   
+}
+@media screen and (max-width: 834px) {
+.oshinagaki-hirame-course-menu-list-menu p{
+    text-align: left;
+    font-size: 18px;
+    margin-left: 180px;   
+}
+}
+@media screen and (max-width: 420px) {
+    .oshinagaki-hirame-course-menu-list-menu p{
+        text-align: center;
+        font-size: 16px;
+        margin-left: 0;   
+    }
+}
+.oshinagaki-hirame-course-menu-list-images{
+margin-left: 20px;
+}
+@media screen and (max-width: 834px) {
+.oshinagaki-hirame-course-menu-list-images{
+    margin-left: 15%;
+    }
+}
+@media screen and (max-width: 428px) {
+    .oshinagaki-hirame-course-menu-list-images{
+        margin-left: auto;
+        }
+}
+.oshinagaki-hirame-course-menu-list-images img{
+    display:block;
+    margin: 50px 30px;
+}
+
+
+
+
+/* --------- footer --------- */
+footer{
+    display: flex;
+    font-size: 18px;
+    padding: 120px 0;
+    color: #f9f9f9;
+    background-color:#313131;
+}
+@media screen and (max-width: 428px) {
+    footer{
+        display: block;
+        padding: 40px 0 70px;
+    }
+    }
+
+.footer-sitemap{
+    padding-top: 30px;
+    width: 120%;
+    list-style: none;
+    margin-left: 30%;
+    line-height: 3em;
+    letter-spacing: 1px;
+}
+
+@media screen and (max-width: 834px) {
+.footer-sitemap{
+    font-size: 16px;
+    padding-top: 30px;
+    margin-left: 20%;
+}
+}
+@media screen and (max-width: 420px) {
+    .footer-sitemap{
+        width: 80%;
+        font-size: 16px;
+        padding-top: 20px;
+        text-align: center;
+        margin-left: 0;
+    }
+}
+
+
+
+.footer-sitemap li a{
+    color: #f9f9f9;
+}
+.footer-logo{
+    padding-bottom: 40px;
+    margin-left: 50%;
+}
+.footer-details{
+    margin-left: 40%;
+}
+
+@media screen and (max-width: 834px) {
+.footer-details{
+    font-size: 16px;
+    margin-left: 20%;
+}
+}
+@media screen and (max-width: 420px) {
+    .footer-details{
+        font-size: 16px;
+        margin-left: auto;
+    }
+}
+
+.footer-details ul{
+    text-align: left;
+    padding:auto 0;
+    list-style: none;
+}
+@media screen and (max-width: 420px) {
+.footer-details ul{
+    text-align: left;
+    padding:auto 0;
+    list-style: none;
+}
+}
+.footer-details ul li{
+line-height: 3em;
+}
+@media screen and (max-width: 420px) {
+    .footer-details ul li{
+        text-align: left;
+        padding:10px ;
+        list-style: none;
+    }
+}
+.footer-sns-logo{
+    margin-left: 70%;
+}
+
+@media screen and (max-width: 834px) {
+.footer-sns-logo{
+    margin-left: 50%;
+}
+}
+.footer-sns-logo img{
+    padding: 10px 5px;
+}
+
+/*リンクの形状*/
+#page-top a{
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    background:#942D2F;
+    border-radius: 5px;
+    width: 60px;
+    height: 60px;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase; 
+    text-decoration: none;
+    font-size:1rem;
+    transition:all 0.3s;
+  }
+  
+  #page-top a:hover{
+    background: #777;
+  }
+  
+  /*リンクを右下に固定*/
+  #page-top {
+    position: fixed;
+    right: 10px;
+    bottom:10px;
+    z-index: 2;
+      /*はじめは非表示*/
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  
+  /*　上に上がる動き　*/
+  
+  #page-top.UpMove{
+    animation: UpAnime 0.5s forwards;
+  }
+  @keyframes UpAnime{
+    from {
+      opacity: 0;
+    transform: translateY(100px);
+    }
+    to {
+      opacity: 1;
+    transform: translateY(0);
+    }
+  }
+  
+  /*　下に下がる動き　*/
+  
+  #page-top.DownMove{
+    animation: DownAnime 0.5s forwards;
+  }
+  @keyframes DownAnime{
+    from {
+      opacity: 1;
+    transform: translateY(0);
+    }
+    to {
+      opacity: 1;
+    transform: translateY(100px);
+    }
+  }

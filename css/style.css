@@ -1,0 +1,890 @@
+@charset "utf-8";
+html {
+    scroll-behavior: smooth;
+}
+
+img{
+    vertical-align: bottom;
+}
+
+#wrapper {
+    margin: 0 auto;
+    line-height: 1.5;
+    font-size: 1.3rem;
+    font-family: "ヒラギノ明朝 ProN W6", "HiraMinProN-W6", "HG明朝E", "MS Ｐ明朝", "MS PMincho", "MS 明朝", serif;
+    color: #525252;
+	animation: fadein 2.5s forwards;
+}
+@keyframes fadein{
+	0%{opacity: 0}
+	100%{opacity: 1}
+}
+
+/* パソコンで見たときは"pc"のclassがついた画像が表示される */
+.pc { display: block !important; }
+.sp1 { display: none !important; }
+.sp2 { display: none !important; }
+ 
+/* スマートフォンで見たときは"sp1"のclassがついた画像が表示される */
+@media only screen and (max-width: 834px) and (min-width:429px) {
+    .pc { display: none !important; }
+    .sp1 { display: block !important; }
+    .sp2 { display: none !important; }
+}
+
+/* スマートフォンで見たときは"sp2"のclassがついた画像が表示される */
+@media only screen and (max-width: 428px) {
+    .pc { display: none !important; }
+    .sp1 { display: none !important; }
+    .sp2 { display: block !important; }
+}
+
+
+a :hover{
+    opacity: 0.7;
+    transition: 0.5s;
+}
+
+
+/* --------- ここからheader ---------- */
+header {
+    display: flex;
+    padding: 0 0 15px;
+    position: fixed;
+    top:-0px;
+    width: 100%;
+    height: auto;
+    z-index: 10000;
+    opacity: 0.9;
+    transition: .8s;
+    background: #1a1a1a;
+    font-size: 100%;
+}
+@media screen and (max-width: 834px) {
+header {
+    padding: 0 ;
+}
+}
+header a {
+    text-decoration: none;
+    color: #ececec;
+    letter-spacing: 0.1em;
+}
+.hamburger {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+  @media screen and (max-width: 834px) {
+  .hamburger {
+    width: 30%;
+}
+}
+    
+.hamburger .btn-gnav {
+    position: fixed;
+    top: 8px;
+    right: 20px;
+    width: 30px;
+    height: 24px;
+    z-index: 12;
+    box-sizing: border-box;
+    cursor: pointer;
+    -webkit-transition: all 400ms;
+    transition: all 400ms;
+}
+  
+.hamburger .btn-gnav span {
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background: #ECECEC;
+    border-radius: 10px;
+    -webkit-transition: all 400ms;
+    transition: all 400ms;
+}
+  
+.hamburger .btn-gnav span:nth-child(1) {
+    top: 0;
+}
+  
+.hamburger .btn-gnav span:nth-child(2) {
+    top: 10px;
+}
+  
+.hamburger .btn-gnav span:nth-child(3) {
+    top: 20px;
+}
+  
+.hamburger .btn-gnav.open span:nth-child(1) {
+    background: #ffffff;
+    top: 6px;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+  
+.hamburger .btn-gnav.open span:nth-child(2),
+.hamburger .btn-gnav.open span:nth-child(3) {
+    top: 6px;
+    background: #ffffff;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.btn-gnav.active span:nth-of-type(1) {
+    top: 6px;
+    left: 2px;
+    transform: translateY(0) rotate(-45deg);
+    width: 100%;
+}
+  
+.btn-gnav.active span:nth-of-type(2) {
+  opacity: 0;
+}
+  
+.btn-gnav.active span:nth-of-type(3){
+    top: 6px;
+    left: 2px;
+    transform: translateY(0) rotate(45deg);
+    width: 100%;
+}
+  
+.btn-gnav {
+    display: none;
+}
+  
+.gnav{
+    display: block;
+}
+ul.gnav-menu{
+    margin: 0;
+}  
+.gnav .gnav-menu {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    list-style-type: none;
+    margin-right: 15px;
+}
+@media screen and (max-width: 834px) {
+.gnav .gnav-menu {
+    margin: 0;}
+}
+.gnav .gnav-menu li {
+    margin: 0 auto;
+    padding: 10px 25px 5px;
+    color: #eeeeee;
+}
+@media screen and (max-width: 834px) {
+    .gnav .gnav-menu li {
+      display: block;
+    }
+}
+ 
+@media screen and (max-width: 834px) {
+    .btn-gnav {
+        display: block;
+    } 
+    .gnav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100%;
+        background-color: #1a1a1a;
+        font-size: 18px;
+        box-sizing: border-box;
+        z-index: 1;
+        padding-top: 65px;
+        transition: .3s;
+    }  
+    .gnav.open {
+        right: 0;
+    } 
+    .gnav .gnav-menu {
+        padding: 0;
+        width: 100%;
+        height: 80%;
+        display: block;
+        flex-direction: column;
+        text-align: center;
+        /*justify-content: center;*/
+    }  
+    .gnav .gnav-menu li {
+        width: 70%;
+        padding: 25px;
+    }
+}
+.gnav .gnav-menu li:nth-child(n+7){
+    border: none;
+}
+.gnav a{
+    text-decoration: none;
+    color: #fcfcfc;
+}
+.gnav:hover{
+    color: #a8a8a8;
+}
+.gnav a.active{
+    color: #1b85ff;
+}
+
+.gnav-menu .phone-number{
+    font-size: 1.6em;
+}
+.global-navi-sns-icon{
+    text-align: right;
+    padding-right: 240px;
+}
+.global-navi-sns-icon img{
+    padding: 5px 8px;
+}
+.reserve-button{
+    text-align: right;
+    margin-top: -35px;
+}
+
+.reserve-button b{
+    width: 11%;
+    padding: 2px 15px;
+    margin-right: 50px;
+    color: #fcfcfc;
+    background-color: #b9000e;
+    border: 6px outset #b9000e;
+}
+/* -------- ここまでheader --------- */
+
+
+/* --------- main --------- */
+/* --------- スライドのためのcss --------- */
+
+.swiper myswiper{
+    position: relative;
+}
+.top-page-slide-logo-yukihira{
+    position: absolute;
+    z-index: 999;
+    top:43%;
+    left:70%; 
+}
+@media screen and (max-width: 834px) {
+.top-page-slide-logo-yukihira{
+    top:45%;
+    left:60%;
+}
+}
+.top-page-slide-ume{
+    position: absolute;
+    z-index: 998;
+    top:0;
+    left:0; 
+}
+@media screen and (max-width: 834px) {
+    .top-page-slide-ume{
+        display: none;
+    }
+}
+
+
+/* --------- sectionおもてなし --------- */
+.omotenashi{ 
+    margin: 0 auto;
+    background-image: url("../images/washi-white.png");
+    padding: 130px 10%; 
+}
+
+@media screen and (max-width: 428px) {
+.omotenashi{ 
+padding: 70px 0; 
+}
+}
+
+.omotenashi img{
+    margin-left:10px;
+}
+
+@media screen and (max-width: 834px) {
+.omotenashi img{
+    margin: auto;
+}
+}
+@media screen and (max-width: 428px) {
+.omotenashi img{
+    margin:auto;
+}
+}
+
+.omotenashi-introduce{
+    -ms-writing-mode: tb-rl;
+    writing-mode: vertical-rl;
+    font-size: 18px;
+    line-height: 2em;
+    letter-spacing: 0.2em;
+    margin: 0;
+}
+@media screen and (max-width: 834px) {
+.omotenashi-introduce{
+    font-size: 18px;
+    margin: auto;
+    }
+}
+@media screen and (max-width: 428px) {
+    .omotenashi-introduce{
+        font-size: 18px;
+        margin: auto;
+    }
+}
+@media screen and (max-width: 834px) {
+    .omotenashi-introduce h2{
+        font-size: 21px;
+    }
+}
+@media screen and (max-width: 428px) {
+    .omotenashi-introduce h2{
+        margin-left: 0;
+    }
+}
+
+/*===========fade-inアニメーションの指定===========*/
+
+.js-fade {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(50px);
+    transition: opacity 2s,visibility 2s, transform 1s;
+    display: flex;
+}
+@media screen and (max-width: 834px) {
+.js-fade {
+    display: block;
+}
+}
+.scroll {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0px);
+}
+
+/* --------- sectionお品書き --------- */
+.oshinagaki{
+    padding:100px auto;
+    text-align: center;
+    background: url("../images/momiji-right.png"),url("../images/momiji-left.png"),url("../images/washi-glay.png");
+    background-size: 30%,30%, 300%;
+    background-position: 100% 0,0 100%, 50%;
+    background-repeat: no-repeat;   
+}
+
+@media screen and (max-width: 834px) {
+.oshinagaki{
+    padding-bottom: 60px;
+    text-align: center;
+    background: url("../images/momiji-right.png"),url("../images/momiji-left.png"),url("../images/washi-glay.png");
+    background-size: 30%,30%,300% ;
+    background-position: 100% 0,0 100%, 50%;
+    background-repeat: no-repeat;   
+}
+}
+
+@media screen and (max-width: 428px) {
+    .oshinagaki{
+        padding-bottom: 6px;
+        text-align: center;
+        background: url("../images/momiji-right.png"),url("../images/momiji-left.png"),url("../images/washi-glay.png");
+        background-size: 50%,50%,700% ;
+        background-position: 100% 0,0 100%, 0;
+        background-repeat: no-repeat;   
+    }
+}
+.oshinagaki-top-h2{
+    margin:0 auto;
+    padding:120px 0px 10px 0px;
+}
+@media screen and (max-width: 834px) {
+.oshinagaki-top-h2{
+    font-size: 24px;
+    margin:0 auto;
+    padding: 120px 0 10px;
+}
+}
+@media screen and (max-width: 428px) {
+    .oshinagaki-top-h2{
+        font-size: 22px;
+        margin:0 auto;
+        padding: 60px 0 10px;
+    }
+}
+.oshinagaki-top-hr{
+    margin-bottom: 100px;
+    width: 30%;
+}
+@media screen and (max-width: 834px) {
+.oshinagaki-top-hr{
+    margin-bottom: 90px;
+    width: 50%;
+}
+}
+@media screen and (max-width: 428px) {
+    .oshinagaki-top-hr{
+        margin-bottom: 20px;
+        width: 40%;
+    }
+}
+
+/* --------- sectionくえコース --------- */
+.oshinagaki-kue-course{
+    padding: 0 15%;
+    margin-bottom: 120px;
+    display: flex;
+}
+@media screen and (max-width: 834px) {
+.oshinagaki-kue-course{
+    padding: 0 5%;
+    margin-bottom: 80px;
+    display: flex;
+}
+}
+@media screen and (max-width: 428px) {
+    .oshinagaki-kue-course{
+        padding: 0 auto;
+        margin-bottom: 40px;
+        display: block;
+    }
+}
+.oshinagaki-kue-course img{
+    margin-top: 0;
+}
+@media screen and (max-width: 834px) {
+.oshinagaki-kue-course img{
+    margin-top: 80px;
+}
+}
+@media screen and (max-width: 428px) {
+    .oshinagaki-kue-course img{
+        margin-top: 70px;
+        margin-left: auto;
+    }
+    }
+.oshinagaki-kue-course h2{
+    padding: 0;
+    margin: 10px 0 40px 10px;
+    text-align: left;
+    color: #fcfcfc;
+}
+@media screen and (max-width: 834px) {
+.oshinagaki-kue-course h2{
+    padding: 0;
+    font-size: 21px;
+    margin: 10px auto 30px;
+    background-position:77.5% 46.6%;
+}
+}
+
+@media screen and (max-width: 428px) {
+    .oshinagaki-kue-course h2{
+        background: none;
+        padding: 20px 80px;
+        margin: 0;
+    }
+}
+
+.oshinagaki-kue-course-introduce{
+    padding-left: 5%;
+    font-size: 20px;
+}
+
+.oshinagaki-kue-course-introduce p{
+    font-size: 16px;
+    padding: 10px auto;
+    margin-bottom: 30px;
+    line-height: 2.5em;
+    text-align: left;
+}
+
+.oshinagaki-kue-details{
+    padding: 2px auto;
+    margin-left: 60%;
+    color: #fcfcfc;
+    background-color: #7a111a;
+    border: 3px outset #7a111a;
+    cursor: pointer;
+}
+@media screen and (max-width: 834px) {
+.oshinagaki-kue-details{
+    font-size: 16px;
+    padding: 1px 20px;
+    margin-left: 60%;
+}
+}
+@media screen and (max-width: 428px) {
+    .oshinagaki-kue-details{
+        font-size: 18px;
+        padding: 1px 60px;
+        margin: auto;
+        text-align: center;
+    }
+}
+/* --------- ここまでsectionくえコース --------- */
+
+
+.oshinagaki-course-middle-hr{
+    width: 70%;
+    margin-bottom: 140px;
+}
+@media screen and (max-width: 834px) {
+.oshinagaki-course-middle-hr{
+    margin-bottom: 70px;
+}
+}
+
+
+/* --------- sectionひらめコース ---------- */
+.oshinagaki-hirame-course{
+    padding: 0 15%;
+    margin-bottom: 220px;
+    display: flex;
+}
+@media screen and (max-width: 834px) {
+.oshinagaki-hirame-course{
+    padding: 0 5%;
+    margin-bottom: 80px;
+    display: flex;
+}
+}
+@media screen and (max-width: 428px) {
+    .oshinagaki-hirame-course{
+        padding: 0 auto;
+        margin-bottom: 80px;
+        display: block;
+    }
+}
+.oshinagaki-hirame-course img{
+    margin-top: 0;
+}
+@media screen and (max-width: 834px) {
+.oshinagaki-hirame-course img{
+    margin-top: 60px;
+}
+}
+@media screen and (max-width: 428px) {
+    .oshinagaki-hirame-course img{
+        margin-top: 70px;
+        margin-left: auto;
+    }
+    }
+.oshinagaki-hirame-course h2{
+    padding: 0;
+    margin: 10px 0 40px 10px;
+    text-align: left;
+    color: #fcfcfc;
+}
+@media screen and (max-width: 834px) {
+.oshinagaki-hirame-course h2{
+    padding: 0;
+    font-size: 21px;
+    margin: 10px auto 20px;
+    background-position:77.5% 46.6%;
+}
+}
+
+@media screen and (max-width: 428px) {
+    .oshinagaki-hirame-course h2{
+        background: none;
+        padding: 20px 80px;
+        margin: 0;
+    }
+}
+
+.oshinagaki-hirame-course-introduce{
+    padding-left: 5%;
+    font-size: 20px;
+}
+
+.oshinagaki-hirame-course-introduce p{
+    font-size: 16px;
+    padding: 10px auto;
+    margin-bottom: 30px;
+    line-height: 2.5em;
+    text-align: left;
+}
+
+.oshinagaki-hirame-details{
+    padding: 2px auto;
+    margin-left: 60%;
+    color: #fcfcfc;
+    background-color: #7a111a;
+    border: 3px outset #7a111a;
+    cursor: pointer;
+}
+@media screen and (max-width: 834px) {
+.oshinagaki-hirame-details{
+    font-size: 16px;
+    padding: 1px 20px;
+    margin-left: 60%;
+}
+}
+@media screen and (max-width: 428px) {
+    .oshinagaki-hirame-details{
+        font-size: 18px;
+        padding: 1px 60px;
+        margin:0 auto;
+        text-align: center;
+    }
+}
+
+/* --------- sectionお知らせ --------- */
+.oshirase{
+    padding:0 10% 150px;
+    text-align: center;
+    background: url(../images/washi-white.png);
+    background-size: 300%;
+    background-position: 100%;
+    background-repeat: no-repeat;
+}
+@media screen and (max-width: 834px) {
+    .oshirase{
+        padding-bottom: 90px;
+        background-size: 200%;
+    }
+}
+@media screen and (max-width: 428px) {
+    .oshirase{
+        padding-bottom: 70px;
+        background-size: 500%;
+    }
+}
+
+.oshirase h2{
+    padding: 80px 0 0;
+    margin-top: 0;
+}
+
+@media screen and (max-width: 834px) {
+.oshirase h2{
+    font-size: 24px;
+    padding: 80px 0 0;
+}
+}
+@media screen and (max-width: 834px) {
+    .oshirase h2{
+        font-size: 22px;
+        padding: 60px 0 0;
+    }
+}
+
+.oshirase-top-hr{
+    width: 50%;
+    margin-bottom: 80px;
+}
+@media screen and (max-width: 834px) {
+    .oshirase-top-hr{
+        width: 50%;
+        margin-bottom: 0;
+    }
+}
+@media screen and (max-width: 428px) {
+.oshirase-top-hr{
+    width: 50%;
+    margin-bottom: 20px;
+}
+}
+
+
+.oshirase-table{
+    margin: 0 auto;
+}
+
+.oshirase-table th,.oshirase td{
+    font-size: 18px;
+    color:#525252;
+    text-align: left;
+    padding: 10px 0;
+    display: flex;
+}
+
+@media screen and (max-width: 834px) {
+    .oshirase-table th,.oshirase td{
+        font-size: 16px;
+    }
+}
+.oshirase-table *:nth-last-child(2){
+    margin-top: 20px;
+}
+.oshirase td{
+border-bottom:solid 1px rgb(175, 175, 175);
+}
+
+
+/* --------- footer --------- */
+footer{
+    display: flex;
+    font-size: 18px;
+    padding: 120px 0;
+    color: #f9f9f9;
+    background-color:#313131;
+}
+
+@media screen and (max-width: 834px) {
+    footer{
+        padding: 0 auto 40px;
+    }
+    }
+@media screen and (max-width: 428px) {
+footer{
+    display: block;
+    padding: 40px 0 70px;
+}
+}
+
+.footer-sitemap{
+    padding-top: 30px;
+    width: 120%;
+    list-style: none;
+    margin-left: 30%;
+    line-height: 3em;
+    letter-spacing: 1px;
+}
+
+@media screen and (max-width: 834px) {
+.footer-sitemap{
+    font-size: 16px;
+    padding-top: 30px;
+    margin-left: 20%;
+}
+}
+@media screen and (max-width: 428px) {
+    .footer-sitemap{
+        width: 80%;
+        font-size: 16px;
+        padding-top: 20px;
+        text-align: center;
+        margin-left: 0;
+    }
+}
+
+.footer-sitemap li a{
+    color: #f9f9f9;
+}
+.footer-logo{
+    padding-bottom: 40px;
+    margin-left: 50%;
+}
+.footer-details{
+    margin-left: 40%;
+}
+
+@media screen and (max-width: 834px) {
+.footer-details{
+    font-size: 16px;
+    margin-left: 20%;
+}
+}
+@media screen and (max-width: 428px) {
+    .footer-details{
+        font-size: 16px;
+        margin-left: auto;
+    }
+}
+
+.footer-details ul{
+    text-align: left;
+    padding:auto 0;
+    list-style: none;
+}
+@media screen and (max-width: 428px) {
+.footer-details ul{
+    text-align: left;
+    padding:auto 0;
+    list-style: none;
+}
+}
+.footer-details ul li{
+line-height: 3em;
+}
+@media screen and (max-width: 428px) {
+    .footer-details ul li{
+        text-align: left;
+        padding:10px ;
+        list-style: none;
+    }
+}
+
+.footer-sns-logo{
+    margin-left: 70%;
+}
+
+@media screen and (max-width: 834px) {
+.footer-sns-logo{
+    margin-left: 50%;
+}
+}
+.footer-sns-logo img{
+    padding: 10px 5px;
+}
+
+/*リンクの形状*/
+#page-top a{
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    background:#942D2F;
+    border-radius: 5px;
+    width: 60px;
+    height: 60px;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase; 
+    text-decoration: none;
+    font-size:1rem;
+    transition:all 0.3s;
+  }
+  
+  #page-top a:hover{
+    background: #777;
+  }
+  
+  /*リンクを右下に固定*/
+  #page-top {
+    position: fixed;
+    right: 10px;
+    bottom:10px;
+    z-index: 2;
+      /*はじめは非表示*/
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  
+  /*　上に上がる動き　*/
+  
+  #page-top.UpMove{
+    animation: UpAnime 0.5s forwards;
+  }
+  @keyframes UpAnime{
+    from {
+      opacity: 0;
+    transform: translateY(100px);
+    }
+    to {
+      opacity: 1;
+    transform: translateY(0);
+    }
+  }
+  
+  /*　下に下がる動き　*/
+  
+  #page-top.DownMove{
+    animation: DownAnime 0.5s forwards;
+  }
+  @keyframes DownAnime{
+    from {
+      opacity: 1;
+    transform: translateY(0);
+    }
+    to {
+      opacity: 1;
+    transform: translateY(100px);
+    }
+  }
